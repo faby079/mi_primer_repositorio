@@ -18,7 +18,7 @@ from django.urls import path
 from django.contrib import admin
 from django.urls import path
 from plantillas import views
-
+from django import
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home',views.home_page_wiew),
