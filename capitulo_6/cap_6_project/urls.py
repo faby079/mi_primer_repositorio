@@ -22,5 +22,8 @@ from listas import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('notas',views.notas_page_view),
+    path('notas',views.notas_page_view,name = 'notas'),
+    path('anadir',views.insert,name ='insert'),
+
+
 ]
