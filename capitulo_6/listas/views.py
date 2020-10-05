@@ -11,12 +11,28 @@ def  notas_page_view(request):
                             user="capitulo_6_user",
                             password="banana")
     cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    cursor.execute("SELECT * FROM notas;")
-    result = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    params = {'notas': result}
-    return render(request, 'notas.html', params)
+    prioridad = request.GET.get('get_prioridad', default='%')
+    with open("debug.log","w") as debug_file:
+        print(f"SELECT * FROM notas WHERE prioridad LIKE '{prioridad}';",file=debug_file)
+
+
+        cursor.execute(f"SELECT * FROM notas WHERE prioridad='{prioridad}';")
+        result = cursor.fetchall()
+        conn.commit()
+        cursor.close()
+        conn.close()
+        params = {'notas': result}
+        return render(request,'notas.html',params)
+
+
+
+
+
+
+
+
+
+
 
 
 def insert (request):

@@ -12,12 +12,19 @@
        <legend>{{ nota.prioridad }} - {{ nota.titulo }}</legend>
        {{ nota.contenido }} <br>
    </fieldset>
-
-
-
 <br>
-
 {% endfor %}
+
+<form method="GET" action="{% url 'notas' %}">
+   <label for="id_prioridad">Prioridad:</label>
+   <select id="id_prioridad" name="get_prioridad">
+           <option value="alta">Alta</option>
+           <option value="normal">Normal</option>
+           <option value="baja">Baja</option>
+   </select>
+   <input type="submit" value="filtrar">
+</form>
+
 
 
 
@@ -26,10 +33,6 @@
 
 <form method="POST" action="/anadir">
     {% csrf_token %}
-
-
-
-
     <select id="id_prioridad" name="name_prioridad">
 
         <option value="alta">Alta</option>
@@ -41,35 +44,12 @@
 
     <textarea name="name_contenido" id="id_new_item" cols="40" rows="5"
               placeholder="Escribe tu contenido aqui"></textarea>
-
-    <input type="submit" value="guardar">
-
-
-
-
-
-
-
-
-
+    <input type="submit" value="guardar"><br>
 </form>
 
 
+
 </body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
 
 
