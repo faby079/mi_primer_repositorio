@@ -1,1 +1,1 @@
-SELECT * FROM notas WHERE prioridad LIKE 'alta"';
+SELECT * FROM notas WHERE prioridad LIKE 'baja'; alter user capitulo_6_user with  password'1234' ; commit ;--';

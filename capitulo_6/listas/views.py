@@ -16,13 +16,14 @@ def  notas_page_view(request):
         print(f"SELECT * FROM notas WHERE prioridad LIKE '{prioridad}';",file=debug_file)
 
 
-        cursor.execute(f"SELECT * FROM notas WHERE prioridad='{prioridad}';")
+        cursor.execute("SELECT * FROM notas WHERE prioridad LIKE %s",(prioridad))
         result = cursor.fetchall()
         conn.commit()
         cursor.close()
         conn.close()
         params = {'notas': result}
         return render(request,'notas.html',params)
+
 
 
 
